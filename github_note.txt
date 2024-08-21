@@ -1,0 +1,8 @@
+First:
+git add .
+
+Second:
+git commit -m "hw 2"
+
+Third:
+git push

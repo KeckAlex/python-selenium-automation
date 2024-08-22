@@ -21,7 +21,7 @@ def click_add_to_cart(context):
 @when('Confirm Add to Cart button from side navigation')
 def confirm_add_to_cart(context):
     context.driver.find_element(*CONFIRM_ADD_TO_CART).click()
-    sleep(3)
+    sleep(6)
 
 
 @then('Verify search results shown for {product}')

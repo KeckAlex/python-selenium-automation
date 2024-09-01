@@ -1,6 +1,11 @@
 from selenium.webdriver.common.by import By
 from behave import given, when, then
+from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
+
+CART_ICON = (By.CSS_SELECTOR, '[data-test="@web/CartLink"]')
+SIGN_IN = (By.CSS_SELECTOR, '[data-test*="signIn"]')
+LOG_IN = (By.ID, 'logIn')
 
 
 @given('Open target main page')
@@ -19,17 +24,16 @@ def search_product(context, product):
     context.driver.find_element(By.XPATH, "//button[@data-test='@web/Search/SearchButton']").click()
 
 
-
 @when('Click on Cart icon')
 def click_cart_icon(context):
     context.driver.find_element(By.CSS_SELECTOR, "use[href='/icons/Cart.svg#Cart']").click()
-    sleep(3)
+    context.driver.wait.until(EC.visibility_of_element_located(CART_ICON))
 
 
 @when('Click Sign In')
 def click_sign_in(context):
     context.driver.find_element(By.CSS_SELECTOR, "a[aria-label='Account, sign in']").click()
-    sleep(3)
+    context.driver.wait.until(EC.visibility_of_element_located(SIGN_IN))
 
 
 @when('From right side navigation menu click Sign In')

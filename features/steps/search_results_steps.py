@@ -11,7 +11,10 @@ CONFIRM_ADD_TO_CART = (By.CSS_SELECTOR, "[data-test='content-wrapper'] [id*='add
 
 @when('Click on Add to Cart button')
 def click_add_to_cart(context):
-    context.driver.find_element(*ADD_TO_CART_BTN).click()  # always clicks on 1st Add to cart btn
+    sleep(5)
+    context.driver.execute_script("window.scrollTo(0, 500)")
+    context.driver.wait.until(EC.element_to_be_clickable(ADD_TO_CART_BTN)).click()   # always clicks on 1st Add to cart btn
+
     # context.driver.find_elements(By.CSS_SELECTOR, "[id*='addToCartButton']")[0].click()
     context.driver.wait.until(EC.visibility_of_element_located(SIDE_NAV_PRODUCT_NAME))
 
@@ -24,7 +27,7 @@ def confirm_add_to_cart(context):
 
 @when('Store product name')
 def store_product_name(context):
-    context.product_name = context.driver.find_element(*SIDE_NAV_PRODUCT_NAME).text()
+    context.product_name = context.driver.find_element(*SIDE_NAV_PRODUCT_NAME).text
     print(f'Stored product name: {context.product_name}')
 
 

@@ -7,6 +7,6 @@ Feature: Target main page tests
     Then Verify Sign In form opened
 
 
-# Scenario: Benefit cells on the Target Circle page
-#    Given Open target circle page
-#    Then Verify target circle page has 10 benefit cells
+ Scenario: Benefit cells on the Target Circle page
+    Given Open target circle page
+    Then Verify target circle page has 10 benefit cells

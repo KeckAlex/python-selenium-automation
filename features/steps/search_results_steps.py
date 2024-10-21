@@ -7,7 +7,10 @@ from time import sleep
 ADD_TO_CART_BTN = (By.CSS_SELECTOR, "[id*='addToCartButton']")
 SIDE_NAV_PRODUCT_NAME = (By.CSS_SELECTOR, "[data-test='content-wrapper'] h4")
 CONFIRM_ADD_TO_CART = (By.CSS_SELECTOR, "[data-test='content-wrapper'] [id*='addToCart']")
-
+LISTINGS = (By.CSS_SELECTOR, '[data-test="@web/site-top-of-funnel/ProductCardWrapper"]')
+PRODUCT_TITLE = (By.CSS_SELECTOR, '[data-test="product-title"]')
+# PRODUCT_IMAGE = (By.CSS_SELECTOR, '[data-test="product-title"], img')
+PRODUCT_IMAGE = (By.CSS_SELECTOR, 'img')
 
 @when('Click on Add to Cart button')
 def click_add_to_cart(context):
@@ -31,13 +34,6 @@ def store_product_name(context):
     print(f'Stored product name: {context.product_name}')
 
 
-@then('Verify search results shown for {product}')
-def verify_search_results(context, product):
-    actual_text = context.driver.find_element(By.XPATH, "//div[@data-test='resultsHeading']").text
-    print(actual_text)
-    assert product in actual_text, f'Expected text {product} at in actual text {actual_text}'
-
-
 @then('Verify Sign In form opened')
 def sign_in_opened(context):
     expected_text = 'Sign into your Target account'
@@ -47,10 +43,29 @@ def sign_in_opened(context):
     print('Test case passed')
 
 
+@then('Verify search results shown for {expected_product}')
+def verify_search_results(context, expected_product):
+    context.app.search_results_page.verify_text()
 
-@then('Verify search results URL opens for {expected_product}')
+
+@then('Verify correct search results URL opens for {expected_product}')
 def verify_URL(context, expected_product):
-    url = context.driver.current_url
-    assert expected_product in url, f'Expected {expected_product}' not in{url}
+    context.app.search_results_page.verify_url()
 
 
+@then('Verify that user can see product names and images')
+def verify_products_name_img(context):
+    # To see All listings (comment out if you only check top one)
+    sleep(10)
+    context.driver.execute_script("window.scrollBy(0,2000)", "")
+    sleep(4)
+    context.driver.execute_script("window.scrollBy(0,2000)", "")
+
+    all_products = context.driver.find_elements(*LISTINGS)
+
+    for product in all_products:
+        title = product.find_element(*PRODUCT_TITLE).text
+        assert title, 'Product title not shown'
+        print(title)
+        image = product.find_element(*PRODUCT_IMAGE)
+        assert image, 'Product image not shown'

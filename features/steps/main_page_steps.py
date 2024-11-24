@@ -20,7 +20,7 @@ def open_target_circle(context):
 
 @when('Search for {product}')
 def search_product(context, product):
-    context.app.header.search()
+    context.app.header.search_product()
 
 
 @when('Click on Cart icon')

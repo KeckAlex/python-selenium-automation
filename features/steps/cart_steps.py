@@ -11,19 +11,12 @@ CART_ICON = (By.CSS_SELECTOR, '[data-test="@web/CartLink"]')
 
 @when('Open cart page')
 def open_cart(context):
-    # context.driver.find_element(By.XPATH, "//a[@href='/cart']").click()
     context.driver.get('https://www.target.com/cart')
-    context.driver.wait.until(EC.visibility_of_element_located(CART_ICON))
 
 
 @then('Verify “Your cart is empty” message is shown')
-def cart_is_empty(context):
-    expected_text = 'Your cart is empty'
-    actual_text = context.driver.find_element(By.CSS_SELECTOR, '[data-test="boxEmptyMsg"] h1').text
-    print(actual_text)
-    assert expected_text in actual_text, f'Expected text {expected_text} is not actual text {actual_text}'
-    print('Test case passed')
-
+def verify_cart_empty(context):
+    context.app.cart_page.verify_cart_empty()
 
 
 @then('Verify that cart has {amount} item(s)')

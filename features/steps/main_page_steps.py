@@ -24,9 +24,8 @@ def search_product(context, product):
 
 
 @when('Click on Cart icon')
-def click_cart_icon(context):
-    context.driver.find_element(By.CSS_SELECTOR, "use[href='/icons/Cart.svg#Cart']").click()
-    context.driver.wait.until(EC.visibility_of_element_located(CART_ICON))
+def click_cart(context):
+    context.app.header.click_cart()
 
 
 @when('Click Sign In')

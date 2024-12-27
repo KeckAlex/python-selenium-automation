@@ -19,7 +19,7 @@ class Header(Page):
 
 
     def click_cart(self):
-        self.wait_to_be_clickable(*self.CART_BTN)
+        self.wait_and_click(*self.CART_BTN)
 
     def click_sign_in(self, *locator):
         self.wait_and_click(*self.SIGN_IN).click()

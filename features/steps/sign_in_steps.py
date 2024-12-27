@@ -8,4 +8,4 @@ SIGN_IN = (By.ID, 'account-sign-in')
 
 @then('Verify Sign In form opened')
 def sign_in_opened(context):
-    context.app.sign_in_opened()
+    context.app.sign_in_page.sign_in_opened()

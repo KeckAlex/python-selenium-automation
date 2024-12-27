@@ -34,23 +34,23 @@ def store_product_name(context):
     print(f'Stored product name: {context.product_name}')
 
 
-@then('Verify Sign In form opened')
-def sign_in_opened(context):
-    expected_text = 'Sign into your Target account'
-    actual_text = context.driver.find_element(By.CSS_SELECTOR, "#__next h1").text
-    print(actual_text)
-    assert expected_text in actual_text, f'Expected text {expected_text} is not actual text {actual_text}'
-    print('Test case passed')
+# @then('Verify Sign In form opened')
+# def sign_in_opened(context):
+#     expected_text = 'Sign into your Target account'
+#     actual_text = context.driver.find_element(By.CSS_SELECTOR, "#__next h1").text
+#     print(actual_text)
+#     assert expected_text in actual_text, f'Expected text {expected_text} is not actual text {actual_text}'
+#     print('Test case passed')
 
 
 @then('Verify search results shown for {expected_product}')
 def verify_search_results(context, expected_product):
-    context.app.search_results_page.verify_text()
+    context.app.search_results_page.verify_search_results(expected_product)
 
 
 @then('Verify correct search results URL opens for {expected_product}')
 def verify_URL(context, expected_product):
-    context.app.search_results_page.verify_url()
+    context.app.search_results_page.verify_product_in_url(expected_product)
 
 
 @then('Verify that user can see product names and images')

@@ -7,9 +7,8 @@ class CartPage(Page):
     CART_SUMMARY = (By.XPATH, "//div[./span[contains(text(), 'subtotal')]]")
 
     def verify_cart_empty(self):
-        expected_text='Your cart is empty'
-        actual_text= self.driver.find_element(*self.CART_EMPTY_TXT).text
-        assert expected_text == actual_text, f'Expected {expected_text} did not match actual {actual_text}'
+        self.wait_for_element_appear(*self.CART_EMPTY_TXT)
+        self.verify_text('Your cart is empty', *self.CART_EMPTY_TXT)
 
     def verify_product_name(self,product):
         actual_name = self.driver.find_element(*self.CART_ITEM_TITLE).text

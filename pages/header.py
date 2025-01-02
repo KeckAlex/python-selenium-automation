@@ -14,12 +14,10 @@ class Header(Page):
         print('POM layer:', product)
         self.input_text(product, *self.SEARCH_FIELD)
         self.click(*self.SEARCH_BTN)
-        # wait for the page with search results to load
-        sleep(6)
 
 
     def click_cart(self):
         self.wait_and_click(*self.CART_BTN)
 
     def click_sign_in(self, *locator):
-        self.wait_and_click(*self.SIGN_IN).click()
+        self.wait_and_click(*self.SIGN_IN)

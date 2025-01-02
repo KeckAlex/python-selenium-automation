@@ -10,6 +10,9 @@ class MainPage(Page):
     def open(self):
         self.open_url('https://www.target.com/')
 
+    def open_cart(self):
+        self.open_url('https://www.target.com/cart')
+
     def click_signin(self):
         self.click(*self.SIGNIN_BTN)
 

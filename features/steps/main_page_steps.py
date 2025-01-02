@@ -20,7 +20,6 @@ def open_target_circle(context):
 
 @when('Search for {product}')
 def search_product(context, product):
-    print('Step layer:', product)
     context.app.header.search_product(product)
 
 
@@ -53,9 +52,9 @@ def verify_header_link_amount(context, number):
     links = context.driver.find_elements(By.CSS_SELECTOR, "[id*='utilityNav']")
     assert len(links) == number, f'Expected {number} links, but got {len(links)}'
 
-    # for i in range(len(links)):
-    #     links = context.driver.find_elements(By.CSS_SELECTOR, "[id*='utilityNav']")
-    #     links[i].click()
+    for i in range(len(links)):
+        links = context.driver.find_elements(By.CSS_SELECTOR, "[id*='utilityNav']")
+        links[i].click()
 
 
 @then('Verify target circle page has 10 benefit cells')

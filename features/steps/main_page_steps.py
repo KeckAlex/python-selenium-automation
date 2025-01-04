@@ -12,11 +12,13 @@ LOG_IN = (By.ID, 'logIn')
 def open_target(context):
     context.app.main_page.open()
 
-
 @given('Open target circle page')
 def open_target_circle(context):
     context.driver.get('https://www.target.com/circle')
 
+@given('Open sign in page')
+def open_sign_in(context):
+    context.app.main_page.open_sign_in_page()
 
 @when('Search for {product}')
 def search_product(context, product):
@@ -30,15 +32,12 @@ def click_cart(context):
 
 @when('Click Sign In')
 def click_sign_in(context):
-    #context.driver.find_element(By.CSS_SELECTOR, "a[aria-label='Account, sign in']").click()
-    sleep(3)
     context.app.main_page.click_signin()
 
 
 @when('From right side navigation menu click Sign In')
 def click_sign_in_side_menu(context):
     context.app.main_page.click_signin_sidenav_btn()
-    sleep(3)
 
 
 @then('Verify header is shown')

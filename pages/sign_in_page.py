@@ -1,6 +1,5 @@
 from selenium.webdriver.common.by import By
 
-from homework_target import actual_text
 from pages.base_page import Page
 
 

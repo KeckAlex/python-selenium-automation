@@ -78,7 +78,6 @@ class Page:
     def verify_partial_text(self, expected_partial_text, *locator):
         actual_text = self.driver.find_element(*locator).text
         assert expected_partial_text in actual_text, f'Expected {expected_partial_text} not in actual {actual_text}'
-        # print(actual_text)
 
     def verify_url(self, expected_url):
         actual_url = self.driver.current_url

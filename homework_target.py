@@ -15,7 +15,7 @@ driver.maximize_window()
 # Open https://www.target.com/
 driver.get('https://www.target.com/')
 # find and click SignIn button
-driver.find_element(By.XPATH, "//a[@aria-label='Account, sign in']").click()
+driver.find_element(By.XPATH, '//a[@aria-label="Account, sign in"]').click()
 # click SignIn from side navigation
 driver.find_element(By.XPATH, "//span[@class='sc-859e7637-0 hHZPQy' and text()='Sign in']").click()
 sleep(5)

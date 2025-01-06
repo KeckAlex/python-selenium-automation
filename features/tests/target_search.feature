@@ -33,3 +33,10 @@ Feature: Target search tests
    Given Open target main page
    When Search for Fruit Snack
    Then Verify that user can see product names and images
+
+
+ Scenario: User can see favorites tooltip for search results
+    Given Open Target main page
+    When Search for tea
+    And Hover favorites icon
+    Then Favorites tooltip is shown

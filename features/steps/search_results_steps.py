@@ -1,3 +1,4 @@
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from behave import then, when
@@ -18,6 +19,13 @@ def click_add_to_cart(context):
 def confirm_add_to_cart(context):
     context.app.search_results_page.confirm_add_to_cart()
 
+@when('Hover favorites icon')
+def hover_fav_icon(context):
+    context.app.search_results_page.hover_fav_icon()
+
+@then('Favorites tooltip is shown')
+def verify_fav_tooltip(context):
+    context.app.search_results_page.verify_fav_tooltip()
 
 @when('Store product name')
 def store_product_name(context):

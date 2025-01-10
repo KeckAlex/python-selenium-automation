@@ -1,5 +1,6 @@
 Feature: Tests for sign in page
 
+  @smoke
   Scenario: User can open and close Terms and Conditions from sign in page
    Given Open sign in page
    And Store original window

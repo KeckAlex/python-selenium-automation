@@ -56,10 +56,10 @@ def verify_header_link_amount(context, number):
         links[i].click()
 
 
-@then('Verify target circle page has 10 benefit cells')
+@then('Verify target circle page has 14 benefit cells')
 def verify_header_link_amount(context):
     links = context.driver.find_elements(By.CSS_SELECTOR, "[class*='cell-item-content']")
-    assert len(links) == 10, f'Expected {10} links, but got {len(links)}'
+    assert len(links) == 14, f'Expected {14} links, but got {len(links)}'
 
 
 
